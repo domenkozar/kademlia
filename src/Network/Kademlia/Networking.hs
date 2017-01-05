@@ -71,7 +71,7 @@ openOnL port id' lim rq logInfo logError = withSocketsDo $ do
     -- Get addr to bind to
     (serveraddr:_) <- getAddrInfo
                  (Just (defaultHints {addrFlags = [AI_PASSIVE]}))
-                 Nothing (Just port)
+                 (Just "0.0.0.0") (Just port)
 
     -- Create socket and bind to it
     sock <- socket (addrFamily serveraddr) Datagram defaultProtocol
